@@ -12,13 +12,19 @@ const loadNextPage = async () => {
     if ( users.length === 0 ) return; // Si users es igual a 0, no regresa nada
 
     //state.currentPage = state.currentPage + 1
-    state.currentPage += 1
+    state.currentPage += 1;
     state.users = users;
 
 }
 const loadPreviousPage = async () => {
 
-    throw new Error ('No implementado');
+    if ( state.currentPage === 1 ) return;
+    
+    const users = await loadUsersByPage(state.currentPage - 1 );
+    state.currentPage -= 1;
+    state.users = users;
+
+    /**REVISA NOTAS: MIN 3:31 - LECCION 167 */
 
 }
 
